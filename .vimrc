@@ -30,11 +30,13 @@ Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'vim-scripts/matchit.zip'
 Bundle 'christoomey/vim-tmux-navigator'
 "Bundle 'duskhacker/sweet-rspec-vim'
+Bundle 'terryma/vim-multiple-cursors'
 
 "clojure
 Bundle 'tpope/vim-classpath'
 Bundle 'tpope/vim-fireplace'
 Bundle 'guns/vim-clojure-static'
+Bundle 'vim-scripts/paredit.vim'
 
 Bundle 'vim-ruby/vim-ruby'
 
