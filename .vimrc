@@ -11,7 +11,7 @@ set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 
 " let Vundle manage Vundle
-" required! 
+" required!
 Bundle 'gmarik/vundle'
 
 Bundle 'tpope/vim-fugitive'
@@ -23,6 +23,8 @@ Bundle 'tpope/vim-rbenv'
 Bundle 'tpope/vim-tbone'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-unimpaired'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-eunuch'
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'kien/ctrlp.vim'
@@ -31,6 +33,7 @@ Bundle 'vim-scripts/matchit.zip'
 Bundle 'christoomey/vim-tmux-navigator'
 "Bundle 'duskhacker/sweet-rspec-vim'
 Bundle 'terryma/vim-multiple-cursors'
+Bundle 'bling/vim-airline'
 
 "clojure
 Bundle 'tpope/vim-classpath'
@@ -60,7 +63,7 @@ set backupdir=~/.backup,.,~/    " in a less obtrusive place
 set ruler               " Show the cursor position all the time
 set nowrap              " Don't wrap display of long lines
 set smarttab            " A tab as the first character on a line is shiftwidth
-set shiftround		" round indent to shiftwidth
+set shiftround          " round indent to shiftwidth
 
 set textwidth=78        " Set wrap at 78
 set formatoptions=crq   " Format options for code, only wrap in comments
@@ -178,7 +181,7 @@ fun! s:SetFileName()
 endfun
 
 command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-	 	\ | wincmd p | diffthis
+                \ | wincmd p | diffthis
 
 " Only do this part when compiled with support for autocommands
 if has("autocmd")
@@ -219,7 +222,7 @@ if has("autocmd")
     autocmd FileType haskell nmap <C-c><C-l> :GhciRange<CR>
     autocmd FileType haskell vmap <C-c><C-l> :GhciRange<CR>
     autocmd FileType haskell nmap <C-c><C-f> :GhciFile<CR>
-    
+
     augroup python
         au!
         au FileType python setlocal ts=8 sw=4 et tw=72 foldmethod=indent
@@ -230,7 +233,7 @@ if has("autocmd")
         au!
         au BufRead,BufNewFile *.rdoc setlocal ts=2 sw=2 tw=78
     augroup END
-    
+
     augroup shell
         au!
         au BufNewFile   *.sh    call append(0,"#!/bin/sh")
@@ -270,10 +273,10 @@ set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.i
 let g:netrw_list_hide = '.*\.pyc$'
 
 " MiniBufExplorer settings
-"let g:miniBufExplSplitBelow=1   " Show the explorer at the bottom
-let g:miniBufExplMapCTabSwitchBufs = 1  " <C-Tab> and <C-S-Tab> switches buffers
-let g:miniBufExplMapWindowNavArrows = 1 " Shift-arrows changes window
-let g:miniBufExplModSelTarget = 1       " Don't open buffers in unmodifiable windows (e.g. an explorer window)
+" let g:miniBufExplSplitBelow=1   " Show the explorer at the bottom
+" let g:miniBufExplMapCTabSwitchBufs = 1  " <C-Tab> and <C-S-Tab> switches buffers
+" let g:miniBufExplMapWindowNavArrows = 1 " Shift-arrows changes window
+" let g:miniBufExplModSelTarget = 1       " Don't open buffers in unmodifiable windows (e.g. an explorer window)
 
 
 " Select colormap: 'soft', 'softlight', 'standard' or 'allblue'
@@ -340,3 +343,5 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+
+let g:airline#extensions#tabline#enabled = 1
