@@ -16,7 +16,11 @@ colorscheme solarized
 if has("gui")
     set columns=120               " Use a larger window by default
     set lines=36
-    set guifont=Consolas\ 13   " A nice monospace font at a good size
+    if has("x11")
+        set guifont=Consolas\ 13
+    else
+        set guifont=Inconsolata:h18
+    endif
     set mousehide                 " Hide the cursor when typing
     set go-=T                     " No toolbar
     set laststatus=2              " Show a status bar even with only one window
