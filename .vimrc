@@ -31,9 +31,15 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'vim-scripts/matchit.zip'
 Bundle 'christoomey/vim-tmux-navigator'
-"Bundle 'duskhacker/sweet-rspec-vim'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'bling/vim-airline'
+"Bundle 'Yggdroot/indentLine'
+
+" git change markings in gutter
+Bundle 'mhinz/vim-signify'
+
+" json
+Bundle 'alfredodeza/jacinto.vim'
 
 "clojure
 Bundle 'tpope/vim-classpath'
@@ -42,6 +48,21 @@ Bundle 'guns/vim-clojure-static'
 Bundle 'vim-scripts/paredit.vim'
 
 Bundle 'vim-ruby/vim-ruby'
+
+
+" Text objects
+Bundle 'kana/vim-textobj-user'
+Bundle 'glts/vim-textobj-comment'
+
+" Uses 'r'
+Bundle 'nelstrom/vim-textobj-rubyblock'
+
+" Function parameters using ','
+Bundle 'sgur/vim-textobj-parameter'
+
+" identifier segments, camel case or underscore, 'v'
+Bundle 'Julian/vim-textobj-variable-segment'
+
 
 " File type detection
 filetype plugin on
