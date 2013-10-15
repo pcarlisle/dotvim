@@ -204,6 +204,9 @@ endfun
 command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
                 \ | wincmd p | diffthis
 
+nnoremap <silent> <C-Tab> :bn<CR>
+nnoremap <silent> <C-S-Tab> :bp<CR>
+
 " Only do this part when compiled with support for autocommands
 if has("autocmd")
     " In text files, always limit the width of text to 78 characters
