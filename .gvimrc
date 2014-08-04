@@ -9,7 +9,7 @@ if has("syntax") && (&t_Co > 2 || has("gui_running"))
     syntax on
 endif
 
-"set background=light
+set background=dark
 colorscheme solarized
 
 " Set gui options
@@ -17,7 +17,7 @@ if has("gui")
     set columns=120               " Use a larger window by default
     set lines=36
     if has("x11")
-        set guifont=Consolas\ 13
+        set guifont=Consolas\ 14
     else
         set guifont=Inconsolata:h18
     endif

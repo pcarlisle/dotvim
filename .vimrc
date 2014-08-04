@@ -18,13 +18,15 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-rsi'
 Bundle 'tpope/vim-rake'
-Bundle 'tpope/vim-endwise'
+" This conflicts with paredit electric return
+" Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-rbenv'
 Bundle 'tpope/vim-tbone'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-eunuch'
+Bundle 'tpope/vim-vinegar'
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'kien/ctrlp.vim'
@@ -32,23 +34,27 @@ Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'vim-scripts/matchit.zip'
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'terryma/vim-multiple-cursors'
-Bundle 'bling/vim-airline'
+" Bundle 'bling/vim-airline'
 "Bundle 'Yggdroot/indentLine'
 
 " git change markings in gutter
-Bundle 'mhinz/vim-signify'
+" Bundle 'mhinz/vim-signify'
 
 " json
 Bundle 'alfredodeza/jacinto.vim'
 
+Bundle 'tpope/vim-dispatch'
+Bundle 'tpope/vim-projectionist'
+
 "clojure
-Bundle 'tpope/vim-classpath'
 Bundle 'tpope/vim-fireplace'
+Bundle 'tpope/vim-leiningen'
 Bundle 'guns/vim-clojure-static'
 Bundle 'vim-scripts/paredit.vim'
 
 Bundle 'vim-ruby/vim-ruby'
 
+Bundle 'kchmck/vim-coffee-script'
 
 " Text objects
 Bundle 'kana/vim-textobj-user'
@@ -62,6 +68,11 @@ Bundle 'sgur/vim-textobj-parameter'
 
 " identifier segments, camel case or underscore, 'v'
 Bundle 'Julian/vim-textobj-variable-segment'
+
+" haskell!
+Bundle 'Shougo/vimproc.vim'
+Bundle 'eagletmt/ghcmod-vim'
+Bundle 'eagletmt/neco-ghc'
 
 
 " File type detection
@@ -94,7 +105,7 @@ set linebreak           " when in wrap mode break at reasonable places
 set tagstack            " Keep track of visited tags in a stack
 set hidden              " Allow buffers to become hidden and keep unwritten changes
 
-set background=light
+set background=dark
 colorscheme solarized
 
 set showmatch           " Show matching brackets
@@ -111,6 +122,7 @@ set smartcase           " Do smart case search
 set diffopt=filler,foldcolumn:2,context:10
 
 set sidescroll=1        " Smooth sidescroll
+set number              " Show absolute line numbers
 set relativenumber      " Show line numbers relative to current line
 set sidescrolloff=4     " Scroll when this many characters from edge.
 set scrolloff=4         " Scroll when this many characters from top or bottom.
@@ -139,6 +151,14 @@ set listchars=eol:$,tab:>-,trail:-,extends:>,precedes:<
 if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
     set fileencodings=utf-8,latin1
 endif
+
+function! ToggleRelativeNumber()
+  if (&relativenumber)
+    set norelativenumber
+  else
+    set relativenumber
+  endif
+endfunction
 
 " Toggle highlighting characters past textwidth (or 80 if tw=0)
 nmap <silent> <Leader>l :call <SID>ToggleTWHi()<CR>
@@ -240,7 +260,7 @@ if has("autocmd")
 
     augroup haskell
         au!
-        au FileType haskell setlocal ts=2 sw=2 et
+        au FileType haskell setlocal ts=2 sw=2 et omnifunc=necoghc#omnifunc
     augroup END
 
     autocmd FileType haskell nmap <C-c><C-l> :GhciRange<CR>
@@ -270,6 +290,11 @@ if has("autocmd")
     augroup markdown
         au!
         au FileType markdown setlocal tw=72 ts=2 sw=2 et
+    augroup END
+
+    augroup makefile
+        au!
+        au FileType make setlocal noet sts=0 ts=4 sw=4
     augroup END
 endif
 
@@ -362,10 +387,11 @@ if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
 
+let g:paredit_smartjump = 1
+let g:paredit_electric_return = 1
+let g:clojure_maxlines = 150
+let g:paredit_matchlines = 150
+" let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let', '^->', '^\.', '^try']
+let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let', '^\.', '^try']
 
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-
-let g:airline#extensions#tabline#enabled = 1
+" set balloonexpr=
